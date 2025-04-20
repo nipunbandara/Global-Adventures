@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="form-label-input">
                     <label for="${prefix}-occupation">Occupation:</label>
-                    <input type="text" id="${prefix}-occupation" name="${prefix}-occupation" required>
+                    <input type="text" id="${prefix}-occupation" name="${prefix}-occupation">
                 </div>
                 </div>
                 <div class="form-row">
