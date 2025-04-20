@@ -1,0 +1,429 @@
+/* CSS Styles File*/
+
+/*  Common CSS for all the pages */
+header {
+    background-color: rgb(255,255,255);
+    color: #ffdba9;
+    text-align: center;
+}
+/* Header heading */
+header h1 {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Trebuchet MS', Arial;
+    padding: 10px;
+    color: antiquewhite;
+    font-size: 3em;
+}
+
+
+/* CSS Styles for the main and body section */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    color: #212529;
+    background-color: rgb(255,255,255);
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    padding: 100px;
+    margin-bottom: 20px;
+    margin: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* CSS Styles for the footer section */
+
+/* logo styles */
+.logo {
+    width: 100px;
+    height: auto;
+    margin: 10px;
+}
+
+/* make container items appear horizontal*/
+.logo-container {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+}
+
+.logo-item {
+    padding: 10px;
+}
+
+.logo-container p {
+    font-size: 1.5em;
+    color: #000;
+    padding-top: 30px;
+}
+
+.header-image {
+    width: 100%;
+    filter: brightness(70%);
+    opacity: 0.8;
+    object-fit: cover;
+    height: 400px; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+
+.text_center {
+    text-align: center;
+}
+
+
+
+/* Small image in main content section inside discipline page styles*/
+.discipline-image {
+    margin-left: 15px; 
+    width: 350px; 
+    height: auto;
+}
+
+/* Questionnaire Container */
+.questionnaire-container {
+    max-width: 800px;
+    margin: 40px auto;
+    margin-top: 400px;
+    padding: 30px;
+    background-color: rgb(255,255,255);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* questionnair heading text */
+.questionnaire-container h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* questionnaire description text */
+.questionnaire-container p {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+/* progress bar */
+.progress-bar {
+    display: flex;
+    position: relative;
+    padding-top: 35px;
+}
+
+/* progress path line*/
+.progress-bar:before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    border-top: 2px dashed #c6eef8;
+}
+
+/* progress section texts */
+.progress-section {
+    flex: 1;
+    text-align: center;
+    color: #95a5a6;
+    font-size: 14px;
+    position: relative;
+
+}
+
+/* common styles for the points */
+.progress-section:before {
+    position: absolute;
+    top: -38px; 
+    font-size: 22px;
+    left: 41%;
+
+}
+
+/* starting point */
+.progress-section:first-child:before {
+    content: '🛫';
+}
+
+/* second point */
+.progress-section:nth-child(2):before {
+    content: '🏘️';
+
+}
+
+/* third point */
+.progress-section:nth-child(3):before {
+    content: '⛵️';
+}
+
+/* fourth point */
+.progress-section:nth-child(4):before {
+    content: '🏜️';
+}
+
+/* fifth point */
+.progress-section:nth-child(5):before {
+    content: '🗽';
+}
+
+/* ending point */
+.progress-section:last-child:before {
+    content: '🏝️';
+    top: -36px
+}
+
+/* Active section text */
+.progress-section.active p{
+    color: #3498db;
+    font-weight: bold;
+    background: none;
+}
+
+/* path styles when completeing */
+.progress-section.completed:not(.active):after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #3498db;
+
+}
+
+/* revert changes when going back*/
+.progress-section.active ~ .progress-section.completed:after {
+    background: transparent;
+    content: none;
+}
+
+/* current step icon */
+.progress-section.active:before {
+    content: '✈️';
+    background: none;
+}
+
+
+/* Form Sections */
+.form-section {
+    display: none;
+    padding: 20px 0;
+}
+
+/* active section styles */
+.form-section.active {
+    display: block;
+}
+
+/* form section heading */
+.form-section h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+/* form Groups */
+.form-group {
+    margin-bottom: 25px;
+}
+
+/* form labels */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* text area fix */
+.form-group textarea {
+    resize: vertical;
+}
+
+/* make checkbox and radio groups horizontal vertical to fill screen*/
+.checkbox-group, .radio-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+/* checkbox and radio group label styles */
+.checkbox-group label, .radio-group label {
+    display: flex;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* checkbox and radio group input space */
+.checkbox-group input, .radio-group input {
+    margin-right: 10px;
+}
+
+/* children and friends count input styles */
+.count-input {
+    display: none; 
+    margin-left: 20px;
+}
+
+/* sub category styles */
+.sub-options {
+    display: none; 
+    margin-left: 20px;
+}
+
+/* navigation button section*/
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+/* button styles */
+.prev-btn, .next-btn, .submit-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* previous button */
+.prev-btn {
+    color: #2c3e50;
+}
+
+/* next and submit button */
+.next-btn, .submit-btn {
+    background-color: #3ba9f3;
+    color: white;
+}
+
+/* previous btn hover effects */
+.prev-btn:hover {
+    background-color: #dde4e6;
+}
+
+/* next and submit btn hover effects */
+.next-btn:hover, .submit-btn:hover {
+    background-color: #2885c3;
+}
+
+
+/* base traveller information form section */
+.traveler-info {
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+/* form heading */
+.form-group h3 {
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #bdbdbd;
+}
+
+/* divided inputs into sections - row */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;   
+}
+
+/* form label styles */
+.form-label-input {
+    flex: 1 1 200px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.form-label-input input, 
+.form-label-input select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+/* form error styles */
+.form-label-input input.error,
+.form-label-input select.error {
+    border-color: #d44d3e;
+}
+
+.error-message {
+    color: #d44e3f;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+}
+
+
+/* responsive style changes for smaller displays */
+@media (max-width: 768px) {
+  
+    .logo {
+        width: 70px;
+        height: auto;
+        margin: 10px;
+    }
+    .logo-container p{
+        font-size: 1.2em;
+        color: #000;
+        padding-top: 25px;
+    }
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    /* make form inputs and labels vertical */
+    .form-label-input {
+        flex: 1 1 100%;
+    }
+}
+
+/* remove progress bar texts */
+@media (max-width: 600px) {
+    .progress-section p{
+        display: none;
+    }
+    
+}
+
+/* make logo and headings smaller */
+@media (max-width: 480px) {
+    .logo {
+        width: 70px;
+        height: auto;
+        margin: 10px;
+    }
+    .logo-container p{
+        font-size: 1.2em;
+        color: #000;
+        padding-top: 25px;
+    }
+    header h1 {
+        font-size: 2.5em;
+    }
+}

@@ -1,0 +1,486 @@
+<!-- Home Page -->
+<!DOCTYPE html>
+<html lang="en">
+<!-- Html head section with title name and imports -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Adventures</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+    <header>
+        <!-- background image -->
+        <div class="header-image-container">
+            <!-- logo -->
+            <div class="logo-container">
+                <img class="logo logo-item" src="images/logo.svg" alt="Global Adventures Logo">
+                <p class="logo-item">Global Adventures</p>
+            </div>
+
+            <h1>Welcome to Global Adventures</h1>
+            <!-- Banner photo from Photo by "https://unsplash.com/@julianphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Julian Timmerman</a> on <a href="https://unsplash.com/photos/brown-wooden-bridge-over-blue-sea-under-blue-sky-during-daytime-Fn27DlI8bZ8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" -->
+            <img class="header-image" src="images/header.jpg" alt="Background Image">
+        </div>
+    </header>
+    <main>
+    <!-- Main Questionnaire Section -->
+    <section class="questionnaire-container">
+        <h2>Travel Preferences Questionnaire</h2>
+        <p>The following questionnaire will help us understand your travel preferences and create a tailored travel plan for you</p>
+        
+        <!-- Progress Bar -->
+        <div class="progress-bar">
+            <!-- set first step as default active step -->
+            <div class="progress-section active" progress-step="1"><p>Personal Info</p></div>
+            <div class="progress-section" progress-step="2"><p>Accommodation</p></div>
+            <div class="progress-section" progress-step="3"><p>Travel</p></div>
+            <div class="progress-section" progress-step="4"><p>Environment</p></div>
+            <div class="progress-section" progress-step="5"><p>Destinations</p></div>
+            <div class="progress-section" progress-step="6"><p>Submit</p></div>
+        </div>
+
+        <form id="travel-questionnaire">
+            <!-- Questions are divided into sections to appear one at a time -->
+            <!-- Section 1: Personal Information -->
+            <div class="form-section active" id="section-1">
+                <h2>Personal Information</h2>
+                <div class="form-group">
+                    <label>Travel Companions:</label>
+                    <div class="checkbox-group">
+                        <!-- Checkboxes and count of children and friends input fields -->
+                        <label><input type="checkbox" name="partner" value="true" id="partner-checkbox"> Travelling with Partner?</label>
+                        
+                        <div class="companion-option">
+                            <label><input type="checkbox" name="children" value="true" id="children-checkbox"> Travelling with Children?</label>
+                            <!-- div display is enabled according to the checkbox value with evenlistners -->
+                            <div class="count-input" id="children-count-div">
+                                <label for="children-count">How many children?</label>
+                                <input type="number" id="children-count" name="children-count" min="1">
+                            </div>
+                        </div>
+                        
+                        <div class="companion-option">
+                            <label><input type="checkbox" name="friends" value="true" id="friends-checkbox"> Travelling with Friends?</label>
+                            <div class="count-input" id="friends-count-div">
+                                <label for="friends-count">How many friends?</label>
+                                <input type="number" id="friends-count" name="friends-count" min="1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal details form of the main traveller -->
+                <div class="form-group">
+                    <h3>Main Traveller Information</h3>
+                    <div class="traveler-info">
+                        <!-- section divider for two inputs per row -->
+                        <div class="form-row">
+                            <div class="form-label-input">
+                                <label for="main-name">Name:</label>
+                                <input type="text" id="main-name" name="main-name">
+                            </div>
+                            <div class="form-label-input">
+                                <label for="main-birthdate">Birth Date:</label>
+                                <input type="date" id="main-birthdate" name="main-birthdate" >
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-label-input">
+                                <label for="main-occupation">Occupation:</label>
+                                <input type="text" id="main-occupation" name="main-occupation">
+                            </div>
+                            <div class="form-label-input">
+                                <label for="main-gender">Gender:</label>
+                                <select id="main-gender" name="main-gender">
+                                    <option value="">Select</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="prefer not to say">Prefer not to say</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-label-input">
+                                <label for="main-dietary">Dietary Requirements:</label>
+                                <select id="main-dietary" name="main-dietary" default="none">
+                                    <option value="none">None</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="halal">Halal</option>
+                                    <option value="kosher">Kosher</option>
+                                    <option value="allergies">Allergies</option>
+                                </select>
+                            </div>
+                            <div class="form-label-input">
+                                <label for="main-special-needs">Special Needs:</label>
+                                <textarea id="main-special-needs" name="main-special-needs" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Travel companion's details form will be added according to the above selections -->
+                <div id="companion-travelers-container"></div>
+
+                <!-- Other personal preferences about dates and budgets -->
+                <div class="form-group">
+                    <h3>Travel Dates, Budget and Activity Level</h3>
+                    <div class="form-row">
+                        <div class="form-label-input">
+                            <label for="start-date">Travel Start Date:</label>
+                            <input type="date" id="start-date" name="start-date">
+                        </div>
+                        <div class="form-label-input">
+                            <label for="end-date">Travel End Date:</label>
+                            <input type="date" id="end-date" name="end-date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget-range">Budget Range:</label>
+                        <div class="range-container">
+                            <input type="range" id="budget-range" name="budget-range" min="500" max="20000" step="500" value="500">
+                            <span id="budget-display">$500</span>
+                        </div>
+                        <div class="range-labels">
+                            <span>$500</span>
+                            <span>$20,000+</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>How active are you?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="activity-level" value="All the time" class="activity-l-type"> Traveling All The Time</label>
+                            <label><input type="radio" name="activity-level" value="Rest days" class="activity-l-type"> Need Rest Days</label>
+                            <label><input type="radio" name="activity-level" value="Strenuous" class="activity-l-type"> Strenuous Activities</label>
+                            <label><input type="radio" name="activity-level" value="Sedentary" class="activity-l-type"> Sedentary Activities</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Rest Day Frequency:</label>
+                        <select id="rest-frequency" name="rest-frequency">
+                            <option value="">Select an option</option>
+                            <option value="no-rest">No rest days needed</option>
+                            <option value="once-a-week">Once a week</option>
+                            <option value="twice-a-week">Twice a week</option>
+                            <option value="three-times-a-week">Three times a week</option>
+                            <option value="four-times-a-week">Four times a week</option>
+                            <option value="five-times-a-week">Five times a week</option>
+                            <option value="six-times-a-week">Six times a week</option>
+                            <option value="daily">Daily</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-navigation">
+                    <!-- Empty space section to push Next button to right corner -->
+                    <div style="width: 50%;"></div>
+                    <button type="button" class="next-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 2: Preferred Accommodation -->
+            <div class="form-section" id="section-2">
+                <h2>Preferred Accommodation</h2>
+
+                <label class="pref-accom">What type of accommodation do you prefer?</label>
+                <!-- Hotel selection with sub options -->
+                <div class="accommodation-option">
+                    <label><input type="radio" name="accommodation" value="hotel" class="accommodation-type"> Hotel</label>
+                    <div class="sub-options">
+                        <label><input type="radio" name="hotel-type" value="5-star"> 5 Star</label>
+                        <label><input type="radio" name="hotel-type" value="3-star"> 3 Star</label>
+                        <label><input type="radio" name="hotel-type" value="single-room"> Single Room</label>
+                        <label><input type="radio" name="hotel-type" value="shared"> Shared</label>
+                    </div>
+                </div>
+                
+                <!-- Only motel selection -->
+                <div class="accommodation-option">
+                    <label><input type="radio" name="accommodation" value="motel" class="accommodation-type"> Motel</label>
+                </div>
+                
+                <!-- Bed and breakfast optioins -->
+                <div class="accommodation-option">
+                    <label><input type="radio" name="accommodation" value="bnb" class="accommodation-type"> Bed & Breakfast</label>
+                    <div class="sub-options">
+                        <label><input type="radio" name="bnb-type" value="with-bathroom"> With Bathroom</label>
+                        <label><input type="radio" name="bnb-type" value="shared-bathroom"> Shared Bathroom</label>
+                    </div>
+                </div>
+                
+                <!-- other options without sub selections -->
+                <div class="accommodation-option">
+                    <label><input type="radio" name="accommodation" value="airbnb" class="accommodation-type"> Airbnb</label>
+                </div>
+                
+                <div class="accommodation-option">
+                    <label><input type="radio" name="accommodation" value="student" class="accommodation-type"> Student Accommodation</label>
+                </div>
+                
+                <div class="accommodation-option">
+                    <label><input type="radio" name="accommodation" value="backpacker" class="accommodation-type"> Backpacker's Accommodation</label>
+                </div>
+                
+                <div class="accommodation-option">
+                    <label><input type="radio" name="accommodation" value="camping" class="accommodation-type"> Camping</label>
+                </div>
+                
+                <!-- Request any other accommodation with text box for user to input data -->
+                <div class="accommodation-option">
+                    <label><input type="radio" name="accommodation" value="other" class="accommodation-type"> Other</label>
+                    <div class="sub-options" >
+                        <label>Please specify: <input type="text" name="other-accommodation"></label>
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn">Previous</button>
+                    <button type="button" class="next-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 3: modes of travel -->
+            <div class="form-section" id="section-3">
+                <h2>Travel Transportation</h2>
+                <div class="form-group">
+                    <label class = "pref-trans">Preferred Mode of Transportation:</label>
+                    
+                    <!-- Air travel selection with sub options -->
+                    <div class="transport-option">
+                        <label><input type="checkbox" name="transport" value="air" class="transport-type"> Air Travel</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="air-type" value="jet"> Jet</label>
+                            <label><input type="checkbox" name="air-type" value="turbo-prop"> Turbo-prop</label>
+                            <label><input type="checkbox" name="air-type" value="helicopter"> Helicopter</label>
+                            <label><input type="checkbox" name="air-type" value="private"> Private Plane</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Water travel selection with sub options -->
+                    <div class="transport-option">
+                        <label><input type="checkbox" name="transport" value="water" class="transport-type"> Water Travel</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="water-type" value="cruise"> Cruise Ship</label>
+                            <label><input type="checkbox" name="water-type" value="sail"> Sailboat</label>
+                            <label><input type="checkbox" name="water-type" value="barge"> Barge</label>
+                            <label><input type="checkbox" name="water-type" value="small-boat"> Small Boat</label>
+                            <label><input type="checkbox" name="water-type" value="large-ship"> Large Ship</label>
+                        </div>
+                    </div>
+
+                    <!-- Train travel selection with without options -->
+                    <div class="transport-option">
+                        <label><input type="checkbox" name="transport" value="train" class="transport-type"> Train</label>
+                    </div>
+                    
+                    <!-- Bus travel selection with without options -->
+                    <div class="transport-option">
+                        <label><input type="checkbox" name="transport" value="bus" class="transport-type"> Bus</label>
+                    </div>
+                    
+                    <!-- Car travel selection with without options -->
+                    <div class="transport-option">
+                        <label><input type="checkbox" name="transport" value="car" class="transport-type"> Car</label>
+                    </div>
+
+                    <!-- Bicycle travel selection without sub options -->
+                    <div class="transport-option">
+                        <label><input type="checkbox" name="transport" value="bicycle" class="transport-type"> Bicycle</label>
+                    </div>
+                    
+                    <!-- Animal travel selection with sub options -->
+                    <div class="transport-option">
+                        <label><input type="checkbox" name="transport" value="animal" class="transport-type"> Animal</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="animal-type" value="horse"> Horse</label>
+                            <label><input type="checkbox" name="animal-type" value="donkey-mule"> Donkey/Mule</label>
+                            <label><input type="checkbox" name="animal-type" value="camel"> Camel</label>
+                            <label><input type="checkbox" name="animal-type" value="llama"> Llama</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Walking travel selection without sub options -->
+                    <div class="transport-option">
+                        <label><input type="checkbox" name="transport" value="walking" class="transport-type"> Walking</label>
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn">Previous</button>
+                    <button type="button" class="next-btn" id="transport-next-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 4: Travel Environments -->
+            <div class="form-section" id="section-4">
+                <h2>Preferred Travel Environments</h2>
+                <div class="form-group">
+                    <label class="pref-env">What environments do you prefer?</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="environments" value="Cities" class="environment-type"> Cities</label>
+                        <label><input type="checkbox" name="environments" value="Country" class="environment-type"> Country</label>
+                        <label><input type="checkbox" name="environments" value="Natural" class="environment-type"> Natural</label>
+                        <label><input type="checkbox" name="environments" value="Mountains" class="environment-type"> Mountains</label>
+                        <label><input type="checkbox" name="environments" value="Deserts" class="environment-type"> Deserts</label>
+                        <label><input type="checkbox" name="environments" value="Rain Forests" class="environment-type"> Rain Forests</label>
+                        <label><input type="checkbox" name="environments" value="Sea" class="environment-type"> Sea</label>
+                        <label><input type="checkbox" name="environments" value="Coastal" class="environment-type"> Coastal</label>
+                        <label><input type="checkbox" name="environments" value="Inland" class="environment-type"> Inland</label>
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn">Previous</button>
+                    <button type="button" class="next-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 5: Destinations -->
+            <div class="form-section" id="section-5">
+                <h2>Travel Preferences</h2>
+                <div class="form-group">
+                    <label class="pref-dest">Preferred Destinations:</label>
+                    
+                    <!-- Destination country selection with sub options -->
+                    <div class="destination-option">
+                        <label><input type="checkbox" name="destination" value="africa" class="destination-type"> Africa</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="africa-region" value="eastern"> Eastern</label>
+                            <label><input type="checkbox" name="africa-region" value="middle"> Middle</label>
+                            <label><input type="checkbox" name="africa-region" value="northern"> Northern</label>
+                            <label><input type="checkbox" name="africa-region" value="western"> Western</label>
+                            <label><input type="checkbox" name="africa-region" value="southern"> Southern</label>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-option">
+                        <label><input type="checkbox" name="destination" value="asia" class="destination-type"> Asia</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="asia-region" value="india"> India</label>
+                            <label><input type="checkbox" name="asia-region" value="malaysia"> Malaysia</label>
+                            <label><input type="checkbox" name="asia-region" value="japan"> Japan</label>
+                            <label><input type="checkbox" name="asia-region" value="north-korea"> North Korea</label>
+                            <label><input type="checkbox" name="asia-region" value="turkmenistan"> Turkmenistan</label>
+                            <label><input type="checkbox" name="asia-region" value="nepal"> Nepal</label>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-option">
+                        <label><input type="checkbox" name="destination" value="central-america" class="destination-type"> Central America</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="central-america-region" value="mexico"> Mexico</label>
+                            <label><input type="checkbox" name="central-america-region" value="honduras"> Honduras</label>
+                            <label><input type="checkbox" name="central-america-region" value="panama"> Panama</label>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-option">
+                        <label><input type="checkbox" name="destination" value="europe" class="destination-type"> Europe</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="europe-region" value="russia"> Russia</label>
+                            <label><input type="checkbox" name="europe-region" value="iceland"> Iceland</label>
+                            <label><input type="checkbox" name="europe-region" value="belarus"> Belarus</label>
+                            <label><input type="checkbox" name="europe-region" value="norway"> Norway</label>
+                            <label><input type="checkbox" name="europe-region" value="switzerland"> Switzerland</label>
+                            <label><input type="checkbox" name="europe-region" value="united-kingdom"> United Kingdom</label>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-option">
+                        <label><input type="checkbox" name="destination" value="european-union" class="destination-type"> European Union</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="eu-region" value="belgium"> Belgium</label>
+                            <label><input type="checkbox" name="eu-region" value="france"> France</label>
+                            <label><input type="checkbox" name="eu-region" value="spain"> Spain</label>
+                            <label><input type="checkbox" name="eu-region" value="sweden"> Sweden</label>
+                            <label><input type="checkbox" name="eu-region" value="ireland"> Ireland</label>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-option">
+                        <label><input type="checkbox" name="destination" value="middle-east" class="destination-type"> Middle East</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="middle-east-region" value="bahrain"> Bahrain</label>
+                            <label><input type="checkbox" name="middle-east-region" value="iraq"> Iraq</label>
+                            <label><input type="checkbox" name="middle-east-region" value="syria"> Syria</label>
+                            <label><input type="checkbox" name="middle-east-region" value="yemen"> Yemen</label>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-option">
+                        <label><input type="checkbox" name="destination" value="north-america" class="destination-type"> North America</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="north-america-region" value="canada"> Canada</label>
+                            <label><input type="checkbox" name="north-america-region" value="greenland"> Greenland</label>
+                            <label><input type="checkbox" name="north-america-region" value="usa"> U.S.A</label>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-option">
+                        <label><input type="checkbox" name="destination" value="oceania" class="destination-type"> Oceania</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="oceania-region" value="papua-new-guinea"> Papua New Guinea</label>
+                            <label><input type="checkbox" name="oceania-region" value="samoa"> Samoa</label>
+                            <label><input type="checkbox" name="oceania-region" value="new-zealand"> New Zealand</label>
+                            <label><input type="checkbox" name="oceania-region" value="micronesia"> Micronesia</label>
+                            <label><input type="checkbox" name="oceania-region" value="australia"> Australia</label>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-option">
+                        <label><input type="checkbox" name="destination" value="south-america" class="destination-type"> South America</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="south-america-region" value="bolivia"> Bolivia</label>
+                            <label><input type="checkbox" name="south-america-region" value="peru"> Peru</label>
+                            <label><input type="checkbox" name="south-america-region" value="colombia"> Colombia</label>
+                            <label><input type="checkbox" name="south-america-region" value="venezuela"> Venezuela</label>
+                        </div>
+                    </div>
+                    
+                    <div class="destination-option">
+                        <label><input type="checkbox" name="destination" value="caribbean" class="destination-type"> The Caribbean</label>
+                        <div class="sub-options">
+                            <label><input type="checkbox" name="caribbean-region" value="cuba"> Cuba</label>
+                            <label><input type="checkbox" name="caribbean-region" value="barbados"> Barbados</label>
+                            <label><input type="checkbox" name="caribbean-region" value="jamaica"> Jamaica</label>
+                            <label><input type="checkbox" name="caribbean-region" value="curacao"> Curaçao</label>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn">Previous</button>
+                    <button type="button" class="next-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 6: Submit -->
+            <div class="form-section" id="section-6">
+                <h2>Almost Done!</h2>
+                <p>Thank you for completing our travel questionnaire.</p>
+                <div class="form-group">
+                </div>
+                <div class="form-navigation">
+                    <button type="button" class="prev-btn">Previous</button>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+            </div>
+        </form>
+    </section>
+    </main>
+    <!-- Footer Section -->
+    <footer>
+
+    </footer>
+
+    <!-- JavaScript Section -->
+    <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        //<![CDATA[ jQuery code base version 3.5.1 ]]>
+    </script>
+</body>
+
+</html>
